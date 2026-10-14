@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qwenforge"
+version = "0.3.4"
+description = "Experimental native MLX-LM server for Qwen3.8-27B with adaptive prefill, incremental prefill checkpoints, reasoning and tool-call compatibility"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "QwenForge contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+fetch = ["huggingface_hub[hf_xet]>=0.34", "tokenizers>=0.20"]
+test = ["pytest>=8"]
+
+[project.scripts]
+qwenforge = "qwenforge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["qwenforge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
